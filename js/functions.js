@@ -6,8 +6,12 @@ function isPalindrome(str) {
   let p1 = 0;
   let p2 = str.length - 1;
   while (p1 < p2) {
-    if (str[p1] == " ") p1++;
-    if (str[p2] == " ") p2--;
+    if (str[p1] === ' ') {
+      p1++;
+    }
+    if (str[p2] === ' ') {
+      p2--;
+    }
     if (str[p1].toLowerCase() !== str[p2].toLowerCase()) {
       return false;
     }
@@ -19,7 +23,7 @@ function isPalindrome(str) {
 
 function getNumber(input) {
   const str = input.toString();
-  let result = "";
+  let result = '';
   for (let i = 0; i < str.length; i++) {
     if (!Number.isNaN(parseInt(str[i]))) {
       result += str[i];
