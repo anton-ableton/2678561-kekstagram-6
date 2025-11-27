@@ -42,12 +42,10 @@ const DESCRIPTIONS = [
 const generateComment = () => {
   const messageCount = getRandomInteger(1, 2);
   let message = '';
-  
   for (let i = 0; i < messageCount; i++) {
     const randomMessageIndex = getRandomInteger(0, MESSAGES.length - 1);
     message += (i > 0 ? ' ' : '') + MESSAGES[randomMessageIndex];
   }
-  
   return {
     id: getRandomInteger(1, 1000),
     avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
@@ -60,13 +58,11 @@ const generateComments = () => {
   const commentsCount = getRandomInteger(0, 30);
   const comments = [];
   const usedIds = new Set();
-  
   for (let i = 0; i < commentsCount; i++) {
     let comment;
     do {
       comment = generateComment();
     } while (usedIds.has(comment.id));
-    
     usedIds.add(comment.id);
     comments.push(comment);
   }
@@ -76,7 +72,6 @@ const generateComments = () => {
 
 const generatePhotosArray = () => {
   const photos = [];
-  
   for (let i = 1; i <= 25; i++) {
     photos.push({
       id: i,
@@ -86,7 +81,6 @@ const generatePhotosArray = () => {
       comments: generateComments()
     });
   }
-  
   return photos;
 };
 
