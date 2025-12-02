@@ -1,4 +1,4 @@
-import { 
+import {
   MIN_COMMENTS,
   MAX_COMMENTS,
   MIN_AVATAR_ID,
@@ -7,7 +7,7 @@ import {
   NAMES
 } from './constants.js';
 
-export const getRandomInteger = (min, max) => 
+export const getRandomInteger = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
 const createIdGenerator = () => {

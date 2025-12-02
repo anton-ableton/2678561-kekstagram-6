@@ -1,12 +1,12 @@
-import { 
-  PHOTO_COUNT, 
-  MIN_LIKES, 
-  MAX_LIKES, 
-  DESCRIPTIONS 
+import {
+  PHOTO_COUNT,
+  MIN_LIKES,
+  MAX_LIKES,
+  DESCRIPTIONS
 } from './constants.js';
-import { 
-  getRandomInteger, 
-  generateComments 
+import {
+  getRandomInteger,
+  generateComments
 } from './util.js';
 
 export const generatePhotosArray = () => {
