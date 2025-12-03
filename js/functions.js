@@ -34,21 +34,43 @@ function getNumber(input) {
   return result === '' ? NaN : Number(result);
 }
 
-checkLength('проверяемая строка', 20);      // true
-checkLength('проверяемая строка', 18);      // true
-checkLength('проверяемая строка', 10);      // false
+const toMins = (timeString) => {
+  const [hours = 0, minutes = 0] = timeString.split(':').map(Number);
+  return hours * 60 + minutes;
+};
 
-isPalindrome('топот');                      // true
-isPalindrome('ДовОд');                      // true
-isPalindrome('Кекс');                       // false
-isPalindrome('Лёша на полке клопа нашёл '); // true
-isPalindrome('a  ');                        // true
+const isMeetingInTime = (startWorkDay, endWorkDay, startMeeting, duration) => {
+  const startWorkMinutes = toMins(startWorkDay);
+  const endWorkMinutes = toMins(endWorkDay);
+  const startMeetingMinutes = toMins(startMeeting);
+  const endMeetingMinutes = startMeetingMinutes + duration;
 
-getNumber('2023 год');                      // 2023
-getNumber('ECMAScript 2022');               // 2022
-getNumber('1 кефир, 0.5 батона');           // 105
-getNumber('агент 007');                     // 7
-getNumber('а я томат');                     // NaN
-getNumber(2023);                            // 2023
-getNumber(-1);                              // 1
-getNumber(1.5);                             // 15
+  return startMeetingMinutes >= startWorkMinutes &&
+         endMeetingMinutes <= endWorkMinutes;
+};
+
+
+checkLength('проверяемая строка', 20);          // true
+checkLength('проверяемая строка', 18);          // true
+checkLength('проверяемая строка', 10);          // false
+
+isPalindrome('топот');                          // true
+isPalindrome('ДовОд');                          // true
+isPalindrome('Кекс');                           // false
+isPalindrome('Лёша на полке клопа нашёл ');     // true
+isPalindrome('a  ');                            // true
+
+getNumber('2023 год');                          // 2023
+getNumber('ECMAScript 2022');                   // 2022
+getNumber('1 кефир, 0.5 батона');               // 105
+getNumber('агент 007');                         // 7
+getNumber('а я томат');                         // NaN
+getNumber(2023);                                // 2023
+getNumber(-1);                                  // 1
+getNumber(1.5);                                 // 15
+
+isMeetingInTime('08:00', '17:30', '14:00', 90); // true
+isMeetingInTime('8:0', '10:0', '8:0', 120);     // true
+isMeetingInTime('08:00', '14:30', '14:00', 90); // false
+isMeetingInTime('14:00', '17:30', '08:0', 90);  // false
+isMeetingInTime('8:00', '17:30', '08:00', 900); // false
