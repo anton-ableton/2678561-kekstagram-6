@@ -60,7 +60,7 @@ function addEventListeners() {
   closeButton.addEventListener('click', closeButtonClickHandler);
 
   isModalOpen = true;
-};
+}
 
 function removeEventListeners() {
   if (!isModalOpen) {
@@ -83,7 +83,7 @@ function removeEventListeners() {
   }
 
   isModalOpen = false;
-};
+}
 
 const openPhoto = (photo) => {
   bigPictureImg.src = photo.url;
@@ -116,6 +116,6 @@ function closePhoto() {
   document.body.classList.remove('modal-open');
 
   removeEventListeners();
-};
+}
 
 export { openPhoto };
