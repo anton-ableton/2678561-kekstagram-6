@@ -16,7 +16,7 @@ const elements = {
   commentsLoader: document.querySelector('.comments-loader')
 };
 
-const createComment = (comment) => {
+function createComment(comment) {
   const commentElement = document.createElement('li');
   commentElement.classList.add('social__comment');
 
@@ -54,19 +54,19 @@ const onCloseButtonClick = () => {
   closePhoto();
 };
 
-const addEventListeners = () => {
+function addEventListeners() {
   document.addEventListener('keydown', onEscKeyDown);
   elements.bigPicture.addEventListener('click', onOverlayClick);
   elements.closeButton.addEventListener('click', onCloseButtonClick);
 };
 
-const removeEventListeners = () => {
+function removeEventListeners() {
   document.removeEventListener('keydown', onEscKeyDown);
   elements.bigPicture.removeEventListener('click', onOverlayClick);
   elements.closeButton.removeEventListener('click', onCloseButtonClick);
 };
 
-const openPhoto = (photo) => {
+function openPhoto(photo) {
   if (state.isModalOpen) {
     return;
   }
@@ -95,7 +95,7 @@ const openPhoto = (photo) => {
   state.isModalOpen = true;
 };
 
-const closePhoto = () => {
+function closePhoto() {
   if (!state.isModalOpen) {
     return;
   }
@@ -109,6 +109,6 @@ const closePhoto = () => {
   document.body.classList.remove('modal-open');
 
   state.isModalOpen = false;
-};
+}
 
 export { openPhoto };
