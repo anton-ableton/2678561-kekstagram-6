@@ -15,39 +15,6 @@ const VALID_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
 let currentImageUrl = null;
 
-const renderSelectedImage = () => {
-  const file = uploadInput.files[0];
-  
-  if (!file) {
-    return false;
-  }
-  if (!file.type.startsWith('image/')) {
-    return false;
-  }
-  if (file.size > MAX_FILE_SIZE) {
-    return false;
-  }
-
-  const fileExtension = file.name.split('.').pop().toLowerCase();
-  if (!VALID_EXTENSIONS.includes(fileExtension)) {
-    return false;
-  }
-  if (currentImageUrl) {
-    URL.revokeObjectURL(currentImageUrl);
-  }
-
-  currentImageUrl = URL.createObjectURL(file);
-
-  imagePreview.src = currentImageUrl;
-  imagePreview.alt = 'Предварительный просмотр загруженной фотографии';
-
-  effectsPreviews.forEach((preview) => {
-    preview.style.backgroundImage = `url(${currentImageUrl})`;
-  });
-
-  return true;
-};
-
 const showUploadForm = () => {
   uploadOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
@@ -85,6 +52,39 @@ const onDocumentKeydown = (evt) => {
     evt.preventDefault();
     hideUploadForm();
   }
+};
+
+const renderSelectedImage = () => {
+  const file = uploadInput.files[0];
+
+  if (!file) {
+    return false;
+  }
+  if (!file.type.startsWith('image/')) {
+    return false;
+  }
+  if (file.size > MAX_FILE_SIZE) {
+    return false;
+  }
+
+  const fileExtension = file.name.split('.').pop().toLowerCase();
+  if (!VALID_EXTENSIONS.includes(fileExtension)) {
+    return false;
+  }
+  if (currentImageUrl) {
+    URL.revokeObjectURL(currentImageUrl);
+  }
+
+  currentImageUrl = URL.createObjectURL(file);
+
+  imagePreview.src = currentImageUrl;
+  imagePreview.alt = 'Предварительный просмотр загруженной фотографии';
+
+  effectsPreviews.forEach((preview) => {
+    preview.style.backgroundImage = `url(${currentImageUrl})`;
+  });
+
+  return true;
 };
 
 uploadInput.addEventListener('change', () => {

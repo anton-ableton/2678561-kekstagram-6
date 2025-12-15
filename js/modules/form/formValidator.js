@@ -67,13 +67,13 @@ const validateHashtagsWithError = (value) => {
     }
   }
 
-  const lowerCaseHashtags = hashtags.map(tag => tag.toLowerCase());
+  const lowerCaseHashtags = hashtags.map((tag) => tag.toLowerCase());
   const uniqueHashtags = [...new Set(lowerCaseHashtags)];
 
   if (uniqueHashtags.length !== hashtags.length) {
-    const result = { 
-      isValid: false, 
-      error: 'Один и тот же хэш-тег не может быть использован дважды' 
+    const result = {
+      isValid: false,
+      error: 'Один и тот же хэш-тег не может быть использован дважды'
     };
     lastValidationCache = { value, result };
     return result;
