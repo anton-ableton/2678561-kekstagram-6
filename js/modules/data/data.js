@@ -3,8 +3,8 @@ import {
   MIN_LIKES,
   MAX_LIKES,
   DESCRIPTIONS,
-} from "./constants.js";
-import { getRandomInteger, generateComments } from "./util.js";
+} from './constants.js';
+import { getRandomInteger, generateComments } from './util.js';
 
 export const generatePhotosArray = () => {
   const photos = [];

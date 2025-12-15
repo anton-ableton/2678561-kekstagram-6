@@ -1,4 +1,4 @@
-const HASHTAG_PATTERN = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/; 
+const HASHTAG_PATTERN = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
 const HASHTAG_MAX_COUNT = 5;
 const COMMENT_MAX_LENGTH = 140;
 
@@ -24,9 +24,9 @@ const validateHashtagsWithError = (value) => {
   const hashtags = inputValue.split(/\s+/);
 
   if (hashtags.length > HASHTAG_MAX_COUNT) {
-    const result = { 
-      isValid: false, 
-      error: `Нельзя указать больше ${HASHTAG_MAX_COUNT} хэш-тегов` 
+    const result = {
+      isValid: false,
+      error: `Нельзя указать больше ${HASHTAG_MAX_COUNT} хэш-тегов`
     };
     lastValidationCache = { value, result };
     return result;
@@ -34,33 +34,33 @@ const validateHashtagsWithError = (value) => {
 
   for (const hashtag of hashtags) {
     if (!hashtag.startsWith('#')) {
-      const result = { 
-        isValid: false, 
-        error: 'Хэш-тег должен начинаться с символа #' 
+      const result = {
+        isValid: false,
+        error: 'Хэш-тег должен начинаться с символа #'
       };
       lastValidationCache = { value, result };
       return result;
     }
     if (hashtag === '#') {
-      const result = { 
-        isValid: false, 
-        error: 'Хэш-тег не может состоять только из решётки' 
+      const result = {
+        isValid: false,
+        error: 'Хэш-тег не может состоять только из решётки'
       };
       lastValidationCache = { value, result };
       return result;
     }
     if (hashtag.length > 20) {
-      const result = { 
-        isValid: false, 
-        error: 'Максимальная длина хэш-тега 20 символов' 
+      const result = {
+        isValid: false,
+        error: 'Максимальная длина хэш-тега 20 символов'
       };
       lastValidationCache = { value, result };
       return result;
     }
     if (!HASHTAG_PATTERN.test(hashtag)) {
-      const result = { 
-        isValid: false, 
-        error: 'Хэш-тег содержит недопустимые символы. Разрешены только буквы и цифры' 
+      const result = {
+        isValid: false,
+        error: 'Хэш-тег содержит недопустимые символы. Разрешены только буквы и цифры'
       };
       lastValidationCache = { value, result };
       return result;
@@ -69,7 +69,7 @@ const validateHashtagsWithError = (value) => {
 
   const lowerCaseHashtags = hashtags.map(tag => tag.toLowerCase());
   const uniqueHashtags = [...new Set(lowerCaseHashtags)];
-  
+
   if (uniqueHashtags.length !== hashtags.length) {
     const result = { 
       isValid: false, 
@@ -79,9 +79,9 @@ const validateHashtagsWithError = (value) => {
     return result;
   }
 
-  const result = { isValid: true, error: '' };
-  lastValidationCache = { value, result };
-  return result;
+  const totalResult = { isValid: true, error: '' };
+  lastValidationCache = { value, totalResult };
+  return totalResult;
 };
 
 const validateHashtags = (value) => validateHashtagsWithError(value).isValid;

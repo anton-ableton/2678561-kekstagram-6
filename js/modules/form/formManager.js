@@ -22,17 +22,14 @@ const renderSelectedImage = () => {
     return false;
   }
   if (!file.type.startsWith('image/')) {
-    alert('Пожалуйста, выберите файл изображения');
     return false;
   }
   if (file.size > MAX_FILE_SIZE) {
-    alert('Файл слишком большой. Максимальный размер: 100MB');
     return false;
   }
 
   const fileExtension = file.name.split('.').pop().toLowerCase();
   if (!VALID_EXTENSIONS.includes(fileExtension)) {
-    alert('Пожалуйста, выберите файл в формате JPG, JPEG, PNG, GIF или WebP');
     return false;
   }
   if (currentImageUrl) {
