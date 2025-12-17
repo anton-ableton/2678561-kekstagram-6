@@ -1,6 +1,8 @@
-import { generatePhotosArray } from './data.js';
-import { writeMiniatures } from './miniaturesWriter.js';
-import { openPhoto } from './postViewer.js';
+import { generatePhotosArray } from './modules/data/data.js';
+import { writeMiniatures } from './modules/gallery/miniaturesWriter.js';
+import { openPhoto } from './modules/gallery/postViewer.js';
+import './modules/form/formValidator.js';
+import './modules/form/formManager.js';
 
 const photosArray = generatePhotosArray();
 writeMiniatures(photosArray);
