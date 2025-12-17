@@ -48,3 +48,60 @@ export const DESCRIPTIONS = [
   'Случайная встреча',
   'Памятный момент'
 ];
+
+export const HASHTAG_PATTERN = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
+export const HASHTAG_MAX_COUNT = 5;
+export const HASHTAG_MAX_LENGTH = 20;
+export const COMMENT_MAX_LENGTH = 140;
+
+export const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
+export const VALID_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
+export const SCALE_STEP = 25;
+export const SCALE_MIN = 25;
+export const SCALE_MAX = 100;
+export const SCALE_DEFAULT = 55;
+
+export const EFFECTS = {
+  none: {
+    min: 0,
+    max: 100,
+    step: 1,
+    unit: '',
+  },
+  chrome: {
+    filter: 'grayscale',
+    min: 0,
+    max: 1,
+    step: 0.1,
+    unit: '',
+  },
+  sepia: {
+    filter: 'sepia',
+    min: 0,
+    max: 1,
+    step: 0.1,
+    unit: '',
+  },
+  marvin: {
+    filter: 'invert',
+    min: 0,
+    max: 100,
+    step: 1,
+    unit: '%',
+  },
+  phobos: {
+    filter: 'blur',
+    min: 0,
+    max: 3,
+    step: 0.1,
+    unit: 'px',
+  },
+  heat: {
+    filter: 'brightness',
+    min: 1,
+    max: 3,
+    step: 0.1,
+    unit: '',
+  }
+};
