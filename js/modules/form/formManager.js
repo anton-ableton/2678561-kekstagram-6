@@ -1,16 +1,16 @@
 import { pristine } from './formValidator.js';
-import { 
-  MAX_FILE_SIZE, 
-  VALID_EXTENSIONS, 
-  SCALE_STEP, 
-  SCALE_MIN, 
-  SCALE_MAX, 
-  SCALE_DEFAULT 
+import {
+  MAX_FILE_SIZE,
+  VALID_EXTENSIONS,
+  SCALE_STEP,
+  SCALE_MIN,
+  SCALE_MAX,
+  SCALE_DEFAULT
 } from '../data/constants.js';
-import { 
-  createSlider, 
-  onEffectChange, 
-  resetEffects 
+import {
+  createSlider,
+  onEffectChange,
+  resetEffects
 } from './photoEffectsManager.js';
 
 const uploadForm = document.getElementById('upload-select-image');
@@ -23,14 +23,14 @@ const submitButton = uploadForm.querySelector('#upload-submit');
 const imagePreview = uploadForm.querySelector('.img-upload__preview img');
 const effectsPreviews = uploadForm.querySelectorAll('.effects__preview');
 
-const scaleSmaller = uploadForm.querySelector(".scale__control--smaller");
-const scaleBigger = uploadForm.querySelector(".scale__control--bigger");
-const scaleValue = uploadForm.querySelector(".scale__control--value");
+const scaleSmaller = uploadForm.querySelector('.scale__control--smaller');
+const scaleBigger = uploadForm.querySelector('.scale__control--bigger');
+const scaleValue = uploadForm.querySelector('.scale__control--value');
 
-const effectLevel = uploadForm.querySelector(".effect-level");
-const effectLevelSlider = uploadForm.querySelector(".effect-level__slider");
-const effectLevelValue = uploadForm.querySelector(".effect-level__value");
-const effectsList = uploadForm.querySelector(".effects__list");
+const effectLevel = uploadForm.querySelector('.effect-level');
+const effectLevelSlider = uploadForm.querySelector('.effect-level__slider');
+const effectLevelValue = uploadForm.querySelector('.effect-level__value');
+const effectsList = uploadForm.querySelector('.effects__list');
 
 let currentImageUrl = null;
 
@@ -92,7 +92,7 @@ function resetForm() {
   pristine.reset();
 
   updateScale(SCALE_DEFAULT);
-  
+
   resetEffects(uploadForm, effectLevelSlider, effectLevel, effectLevelValue, imagePreview);
 
   imagePreview.src = 'img/upload-default-image.jpg';
@@ -147,13 +147,13 @@ function updateScale(value) {
 }
 
 function onScaleSmallerClick() {
-  const currentValue = parseInt(scaleValue.value);
+  const currentValue = parseInt(scaleValue.value, 10);
   const newValue = Math.max(currentValue - SCALE_STEP, SCALE_MIN);
   updateScale(newValue);
 }
 
 function onScaleBiggerClick() {
-  const currentValue = parseInt(scaleValue.value);
+  const currentValue = parseInt(scaleValue.value, 10);
   const newValue = Math.min(currentValue + SCALE_STEP, SCALE_MAX);
   updateScale(newValue);
 }

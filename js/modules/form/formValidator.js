@@ -1,8 +1,8 @@
-import { 
-  HASHTAG_PATTERN, 
-  HASHTAG_MAX_COUNT, 
-  HASHTAG_MAX_LENGTH, 
-  COMMENT_MAX_LENGTH 
+import {
+  HASHTAG_PATTERN,
+  HASHTAG_MAX_COUNT,
+  HASHTAG_MAX_LENGTH,
+  COMMENT_MAX_LENGTH
 } from '../data/constants.js';
 
 const uploadForm = document.getElementById('upload-select-image');

@@ -9,7 +9,7 @@ function createSlider(effectLevelSlider, effectLevel, effectLevelValue, imagePre
   }
 
   const effect = EFFECTS[currentEffect];
-  
+
   if (currentEffect === 'none') {
     effectLevel.classList.add('hidden');
     imagePreview.style.filter = '';
@@ -56,7 +56,7 @@ function applyEffect(value, imagePreview) {
     imagePreview.style.filter = '';
     return;
   }
-  
+
   imagePreview.style.filter = `${effect.filter}(${value}${effect.unit})`;
 }
 
@@ -84,11 +84,11 @@ function setCurrentEffect(effect) {
   currentEffect = effect;
 }
 
-export { 
-  createSlider, 
-  applyEffect, 
-  onEffectChange, 
+export {
+  createSlider,
+  applyEffect,
+  onEffectChange,
   resetEffects,
   getCurrentEffect,
-  setCurrentEffect 
+  setCurrentEffect
 };
