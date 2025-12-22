@@ -1,7 +1,9 @@
-const HASHTAG_PATTERN = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
-const HASHTAG_MAX_COUNT = 5;
-const HASHTAG_MAX_LENGTH = 20;
-const COMMENT_MAX_LENGTH = 140;
+import {
+  HASHTAG_PATTERN,
+  HASHTAG_MAX_COUNT,
+  HASHTAG_MAX_LENGTH,
+  COMMENT_MAX_LENGTH
+} from '../data/constants.js';
 
 const uploadForm = document.getElementById('upload-select-image');
 const hashtagField = uploadForm.querySelector('.text__hashtags');
