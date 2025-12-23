@@ -7,23 +7,23 @@ const showAlert = (message, type = 'error') => {
     alertMessage.textContent = message;
   }
 
-   const onEscapeKeyDown = (evt) => {
+  function onEscapeKeyDown(evt) {
     if (evt.key === 'Escape') {
       closeAlert();
     }
-  };
+  }
 
-  const onOutsideClick = (evt) => {
+  function onOutsideClick(evt) {
     if (!evt.target.closest(`.${type}__inner`)) {
       closeAlert();
     }
-  };
+  }
 
-  const closeAlert = () => {
+  function closeAlert() {
     alertElement.remove();
     document.removeEventListener('keydown', onEscapeKeyDown);
     alertElement.removeEventListener('click', onOutsideClick);
-  };
+  }
 
   const closeButton = alertElement.querySelector(`.${type}__button`);
   if (closeButton) {
