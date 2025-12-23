@@ -9,10 +9,10 @@ const loadPhotos = async () => {
   try {
     const photosArray = await getData();
     writeMiniatures(photosArray);
-    
+
     const picturesContainer = document.querySelector('.pictures');
     const pictureElements = picturesContainer.querySelectorAll('.picture');
-    
+
     pictureElements.forEach((pictureElement, index) => {
       pictureElement.addEventListener('click', (evt) => {
         evt.preventDefault();
@@ -21,7 +21,6 @@ const loadPhotos = async () => {
     });
   } catch (error) {
     showErrorAlert('Не удалось загрузить фотографии. Пожалуйста, обновите страницу.');
-    console.error('Ошибка загрузки фотографий:', error);
   }
 };
 

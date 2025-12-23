@@ -138,7 +138,7 @@ uploadCancel.addEventListener('click', () => {
 
 uploadForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  
+
   const isValid = validateForm();
 
   if (!isValid) {

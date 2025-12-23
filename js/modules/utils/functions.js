@@ -2,37 +2,37 @@ const showAlert = (message, type = 'error') => {
   const alertTemplate = document.querySelector(`#${type}`).content.cloneNode(true);
   const alertElement = alertTemplate.querySelector(`.${type}`);
   const alertMessage = alertElement.querySelector(`.${type}__message`);
-  
+
   if (alertMessage) {
     alertMessage.textContent = message;
   }
-  
-  const closeAlert = () => {
-    alertElement.remove();
-    document.removeEventListener('keydown', onEscapeKeyDown);
-    alertElement.removeEventListener('click', onOutsideClick);
-  };
-  
-  const onEscapeKeyDown = (evt) => {
+
+   const onEscapeKeyDown = (evt) => {
     if (evt.key === 'Escape') {
       closeAlert();
     }
   };
-  
+
   const onOutsideClick = (evt) => {
     if (!evt.target.closest(`.${type}__inner`)) {
       closeAlert();
     }
   };
-  
+
+  const closeAlert = () => {
+    alertElement.remove();
+    document.removeEventListener('keydown', onEscapeKeyDown);
+    alertElement.removeEventListener('click', onOutsideClick);
+  };
+
   const closeButton = alertElement.querySelector(`.${type}__button`);
   if (closeButton) {
     closeButton.addEventListener('click', closeAlert);
   }
-  
+
   document.addEventListener('keydown', onEscapeKeyDown);
   alertElement.addEventListener('click', onOutsideClick);
-  
+
   document.body.appendChild(alertElement);
 };
 
