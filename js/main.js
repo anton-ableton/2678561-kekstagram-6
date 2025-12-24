@@ -1,18 +1,22 @@
-import { generatePhotosArray } from './modules/data/data.js';
+import { getData } from './modules/api/api.js';
 import { writeMiniatures } from './modules/gallery/miniaturesWriter.js';
-import { openPhoto } from './modules/gallery/postViewer.js';
+import { showGalleryError } from './modules/utils/galleryError.js';
+import { setPreviewListeners } from './modules/utils/previewListenersSetter.js';
 import './modules/form/formValidator.js';
 import './modules/form/formManager.js';
 
-const photosArray = generatePhotosArray();
-writeMiniatures(photosArray);
+const loadPhotos = async () => {
+  let photosArray;
 
-const picturesContainer = document.querySelector('.pictures');
-const pictureElements = picturesContainer.querySelectorAll('.picture');
+  try {
+    photosArray = await getData();
+  } catch (error) {
+    showGalleryError(error.message);
+    return;
+  }
 
-pictureElements.forEach((pictureElement, index) => {
-  pictureElement.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    openPhoto(photosArray[index]);
-  });
-});
+  writeMiniatures(photosArray);
+  setPreviewListeners(photosArray);
+};
+
+loadPhotos();
