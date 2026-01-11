@@ -1,4 +1,4 @@
-import { filterStates } from '../data/constants.js';
+import { DEBOUNCE_DELAY_DEFAULT, filterStates } from '../data/constants.js';
 import { filterTenRandomPhotos, filterMostDiscussedPhotos } from '../gallery/miniaturesFilter.js';
 import { writeMiniatures } from '../gallery/miniaturesWriter.js';
 import { setPreviewListeners } from '../utils/previewListenersSetter.js';
@@ -11,7 +11,7 @@ const renderPhotos = (photos) => {
   setPreviewListeners(photos);
 };
 
-const debouncedRenderPhotos = debounce(renderPhotos, 500);
+const debouncedRenderPhotos = debounce(renderPhotos, DEBOUNCE_DELAY_DEFAULT);
 const initPhotoFilters = (photosArray) => {
   const filters = document.querySelector('.img-filters');
   filters.classList.remove('img-filters--inactive');

@@ -1,0 +1,40 @@
+.file-error {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.file-error__inner {
+  width: 500px;
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.file-error__title {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  color: #ff4444;
+}
+
+.file-error__message {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.file-error__button {
+  padding: 10px 20px;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -15,7 +15,9 @@ const elements = {
   closeButton: document.querySelector('.big-picture__cancel'),
   socialCommentCount: document.querySelector('.social__comment-count'),
   commentsLoader: document.querySelector('.comments-loader'),
-  commentsCounter: document.querySelector('.social__comment-count .comments-count')
+  commentsCounter: document.querySelector('.social__comment-count .comments-count'),
+  socialCommentShownCount: document.querySelector('.social__comment-shown-count'),
+  socialCommentTotalCount: document.querySelector('.social__comment-total-count')
 };
 
 function createComment(comment) {
@@ -48,6 +50,13 @@ function updateCommentsCounter() {
     elements.socialCommentCount.classList.remove('hidden');
     textBeforeSpan.textContent = `${shown} из `;
     elements.commentsCount.textContent = totalComments;
+
+    if (elements.socialCommentShownCount) {
+      elements.socialCommentShownCount.textContent = shown;
+    }
+    if (elements.socialCommentTotalCount) {
+      elements.socialCommentTotalCount.textContent = totalComments;
+    }
   }
   else {
     elements.socialCommentCount.classList.add('hidden');

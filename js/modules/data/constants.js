@@ -8,6 +8,8 @@ export const MAX_AVATAR_ID = 6;
 export const MIN_COMMENT_ID = 1;
 export const MAX_COMMENT_ID = 1000;
 
+export const DEBOUNCE_DELAY_DEFAULT = 500;
+
 export const filterStates = Object.freeze({
   DEFAULT: 'default',
   RANDOM: 'random',
@@ -66,7 +68,7 @@ export const VALID_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 export const SCALE_STEP = 25;
 export const SCALE_MIN = 25;
 export const SCALE_MAX = 100;
-export const SCALE_DEFAULT = 55;
+export const SCALE_DEFAULT = 100;
 
 export const EFFECTS = {
   none: {
@@ -113,4 +115,3 @@ export const EFFECTS = {
 };
 
 export const URL = 'https://29.javascript.htmlacademy.pro/kekstagram';
-

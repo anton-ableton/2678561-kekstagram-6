@@ -16,6 +16,7 @@ import {
 } from './photoEffectsManager.js';
 import { sendData } from '../api/api.js';
 import { showSuccessAlert, showErrorAlert } from '../utils/alertManager.js';
+import { showFileError } from '../utils/fileError.js';
 
 const uploadForm = document.getElementById('upload-select-image');
 const uploadInput = uploadForm.querySelector('#upload-file');
@@ -127,6 +128,21 @@ uploadInput.addEventListener('change', () => {
     if (isImageLoaded) {
       showUploadForm();
     } else {
+      const file = uploadInput.files[0];
+      let errorMessage = 'Не удалось загрузить файл.';
+
+      if (file) {
+        if (!file.type.startsWith('image/')) {
+          errorMessage = 'Выбранный файл не является изображением.';
+        } else if (file.size > MAX_FILE_SIZE) {
+          const maxSizeMB = MAX_FILE_SIZE / (1024 * 1024);
+          errorMessage = `Размер файла превышает ${maxSizeMB} MB.`;
+        } else {
+          errorMessage = `Неподдерживаемый формат файла. Допустимые форматы: ${VALID_EXTENSIONS.join(', ')}.`;
+        }
+      }
+
+      showFileError(errorMessage);
       resetForm();
     }
   }

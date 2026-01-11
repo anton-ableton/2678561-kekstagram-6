@@ -16,9 +16,9 @@ const loadPhotos = async () => {
     return;
   }
 
-  initPhotoFilters(photosArray);
   writeMiniatures(photosArray);
   setPreviewListeners(photosArray);
+  initPhotoFilters(photosArray);
 };
 
 loadPhotos();
