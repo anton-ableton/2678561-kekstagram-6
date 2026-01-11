@@ -7,37 +7,37 @@ const showFileError = (message) => {
   const errorElement = template.querySelector('.file-error');
   const messageElement = template.querySelector('.file-error__message');
   const closeButton = template.querySelector('.file-error__button');
-  
+
   messageElement.textContent = message;
 
   document.body.appendChild(template);
 
-  const closeModal = () => {
+  function closeModal() {
     errorElement.remove();
     document.removeEventListener('keydown', onEscKeyDown);
     errorElement.removeEventListener('click', onOverlayClick);
     if (closeButton) {
       closeButton.removeEventListener('click', closeModal);
     }
-  };
+  }
 
-  const onEscKeyDown = (evt) => {
+  function onEscKeyDown(evt) {
     if (evt.key === 'Escape') {
       evt.preventDefault();
       evt.stopPropagation();
       closeModal();
     }
-  };
+  }
 
-  const onOverlayClick = (evt) => {
+  function onOverlayClick(evt) {
     if (evt.target === errorElement) {
       closeModal();
     }
-  };
+  }
 
   document.addEventListener('keydown', onEscKeyDown);
   errorElement.addEventListener('click', onOverlayClick);
-  
+
   if (closeButton) {
     closeButton.addEventListener('click', closeModal);
   }

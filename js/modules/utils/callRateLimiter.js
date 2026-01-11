@@ -1,4 +1,4 @@
-import { DEBOUNCE_DELAY_DEFAULT } from "../data/constants.js";
+import { DEBOUNCE_DELAY_DEFAULT } from '../data/constants.js';
 
 function debounce (callback, timeoutDelay = DEBOUNCE_DELAY_DEFAULT) {
   let timeoutId;
